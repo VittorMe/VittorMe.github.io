@@ -11,9 +11,20 @@
 body{
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(45deg, #000000, #242424, #888888, #584b56);
+    background: linear-gradient(45deg, #000000, #242424, #888888, #000000);
     background-size: 300% 300%;
     animation: colors 15s ease infinite;
+}
+
+header img {
+    width: 170px;
+    border-radius: 50%;
+    margin: 1rem;
+    box-shadow: 0 0 15px #4b4b4b
+}
+
+header h1{
+   
 }
 
 @keyframes colors{
@@ -48,7 +59,7 @@ article{
     margin: 1rem;
     padding: 1rem;
     list-style: none;
-    height: 30vh;
+    height: 20vh;
     text-align: center;
     transition: .5s;
 }
