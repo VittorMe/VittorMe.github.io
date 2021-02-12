@@ -4,11 +4,28 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Special Elite', monospace;
+    
 }
 
 body{
-    background: #262626;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, #000000, #242424, #888888, #584b56);
+    background-size: 300% 300%;
+    animation: colors 15s ease infinite;
+}
+
+@keyframes colors{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
 }
 
 header{
@@ -126,13 +143,6 @@ ul li:nth-child(4):hover{
     color: #633aa1   ;
     box-shadow: 0 0 15px #722CD8   ;
     text-shadow: 0 0 15px #722CD8   ;
-}
-
-
-section{
-
-    margin: 1rem;
-
 }
 
 article {
