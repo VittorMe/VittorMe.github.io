@@ -83,7 +83,7 @@ ul li{
     width: 60px;
     background: #171515;
     line-height: 60px;
-    border-radius: 50px;
+    border-radius: 60px;
     margin: 0 15px;   
 }
 
@@ -95,7 +95,7 @@ ul li:before{
     height: 1;
     height: 100%;
     width: 100%;
-    border-radius: 50%;
+    border-radius: 60%;
     z-index: -1;
     transform:scale(0.9);
 
