@@ -156,7 +156,7 @@ function abrirClienteEmail(event) {
     var lastNome = document.getElementsByName('lastName')[0].value;
 	
 	var nome = firtsNome + ' ' +  lastNome;
-    var email = document.getElementsByName('email')[0].value;
+    var email = 'vittordemelo@gmail.com';
     var assunto = document.getElementsByName('subject')[0].value;
     var mensagem = document.getElementsByName('message')[0].value;
 
