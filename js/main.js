@@ -135,35 +135,76 @@
 	};
 
 	
+	var navigation = function() {
+		var $nav = $('#site-nav');
+		var $toggle = $('.js-nav-toggle');
+
+		$(window).on('scroll', function() {
+			if ($(window).scrollTop() > 40) {
+				$nav.addClass('scrolled');
+			} else if (!$nav.hasClass('nav-open')) {
+				$nav.removeClass('scrolled');
+			}
+		});
+
+		$toggle.on('click', function() {
+			var isOpen = $nav.toggleClass('nav-open').hasClass('nav-open');
+			$toggle.attr('aria-expanded', isOpen);
+			if (isOpen) {
+				$nav.addClass('scrolled');
+			} else if ($(window).scrollTop() <= 40) {
+				$nav.removeClass('scrolled');
+			}
+		});
+
+		$('.site-nav a[href^="#"]').on('click', function(event) {
+			var href = $(this).attr('href');
+			var target = $(href);
+			if (target.length) {
+				event.preventDefault();
+				var offset = href === '#page' ? 0 : target.offset().top - 70;
+				$('html, body').animate({
+					scrollTop: offset
+				}, 600, 'easeInOutExpo');
+				$nav.removeClass('nav-open');
+				$toggle.attr('aria-expanded', false);
+				if (href === '#page') {
+					$nav.removeClass('scrolled');
+				} else {
+					$nav.addClass('scrolled');
+				}
+			}
+		});
+	};
+
 	$(function(){
 		contentWayPoint();
 		goToTop();
 		loaderPage();
 		fullHeight();
 		parallax();
-		// pieChart();
 		skillsWayPoint();
+		navigation();
 	});
 
 
 }());
 
 function abrirClienteEmail(event) {
-	debugger;
-    event.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
+    event.preventDefault();
 
-    var firtsNome = document.getElementsByName('firstName')[0].value;
-    var lastNome = document.getElementsByName('lastName')[0].value;
-	
-	var nome = firtsNome + ' ' +  lastNome;
-    var email = 'vittordemelo@gmail.com';
-    var assunto = document.getElementsByName('subject')[0].value;
-    var mensagem = document.getElementsByName('message')[0].value;
+    var nome = document.getElementById('name').value.trim();
+    var emailRemetente = document.getElementById('email').value.trim();
+    var assunto = document.getElementById('subject').value.trim();
+    var mensagem = document.getElementById('message').value.trim();
 
-    
-    var corpo = "Olá,Vittor\n" + mensagem + "%0D%0A%0D%0AAtenciosamente,%0D%0A" + nome;
+    if (!nome || !emailRemetente || !assunto || !mensagem) {
+        alert('Preencha todos os campos para enviar a mensagem.');
+        return;
+    }
 
-    var link = "mailto:" + email + "?subject=" + encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
+    var corpo = 'Olá, Vittor\n\n' + mensagem + '\n\nAtenciosamente,\n' + nome + '\n' + emailRemetente;
+    var link = 'mailto:vittordemelo@gmail.com?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
 
     window.location.href = link;
-  }
+}
